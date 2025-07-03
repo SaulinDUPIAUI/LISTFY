@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login | Minha Agenda Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #232328;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+    }
+    .login-box {
+      background: #242429;
+      border-radius: 32px;
+      padding: 38px 34px 28px 34px;
+      box-shadow: 0 8px 32px #18181b99;
+      width: 355px;
+      max-width: 97vw;
+      text-align: center;
+      position: relative;
+      overflow: visible;
+    }
+    .logo {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      margin-bottom: 18px;
+      margin-top: 6px;
+      border-radius: 22px;
+      background: #fff;
+      box-shadow: 0 2px 16px #ff775040;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      animation: popIn 0.7s;
+    }
+    .titulo {
+      color: #f7eedc;
+      font-size: 2.2rem;
+      line-height: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+      margin-top: 0px;
+      text-shadow: 0 2px 12px #18181b44;
+    }
+    .subtitulo {
+      color: #8d8d91;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 26px;
+      margin-top: 3px;
+      letter-spacing: 0.1px;
+    }
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      text-align: left;
+      margin-bottom: 18px;
+    }
+    .login-form label {
+      color: #f7eedc;
+      font-size: 1rem;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+    .login-form input {
+      margin-top: 7px;
+      padding: 13px;
+      border-radius: 12px;
+      border: none;
+      font-size: 1.07rem;
+      background: #24242c;
+      color: #f7eedc;
+      outline: none;
+      box-shadow: 0 1px 6px #18181b33;
+      transition: border 0.25s, box-shadow 0.25s;
+      border: 2px solid #232328;
+    }
+    .login-form input:focus {
+      border: 2px solid #ff7750;
+      box-shadow: 0 2px 10px #ff775055;
+    }
+    .entrar-btn, .register-btn {
+      margin-top: 2.2rem;
+      padding: 14px 0;
+      background: #f7b801;
+      color: #232328;
+      font-weight: bold;
+      font-size: 1.13em;
+      border: none;
+      border-radius: 13px;
+      cursor: pointer;
+      transition: background 0.25s, color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 10px #f7b80133;
+      letter-spacing: 1px;
+    }
+    .entrar-btn:hover, .register-btn:hover {
+      background: #ff7750;
+      color: #fff;
+      box-shadow: 0 4px 20px #ff775055;
+    }
+    .switch-link {
+      margin-top: 1.2rem;
+      background: none;
+      border: none;
+      color: #f7b801;
+      font-size: 1em;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    .switch-link:hover { color: #ff7750; }
+    .erro-msg, .sucesso-msg {
+      margin-top: 1.3rem;
+      min-height: 1.3em;
+      text-align: center;
+      font-size: 1em;
+      font-weight: 600;
+      letter-spacing: .2px;
+      transition: color 0.3s;
+    }
+    .erro-msg { color: #ff7750; }
+    .sucesso-msg { color: #00df6f; }
+    footer {
+      margin-top: 2.2rem;
+      font-size: 0.93rem;
+      opacity: 0.85;
+      color: #6d6d6d;
+      letter-spacing: 0.1px;
+    }
+    @keyframes popIn {
+      0% { transform: scale(0.7);}
+      80% { transform: scale(1.08);}
+      100% { transform: scale(1);}
+    }
+    @media (max-width: 500px) {
+      .login-box { padding: 9vw 2vw 5vw 2vw; width: 96vw;}
+      .logo { width: 62px; height: 62px;}
+      .titulo { font-size: 1.3em;}
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <img src="imagens/logo.jpg" alt="Logo Minha Agenda" class="logo">
+    <div class="titulo">Minha Agenda Web</div>
+    <div class="subtitulo">Organize sua rotina com estilo</div>
+
+    <!-- Formulário de Login -->
+    <form id="loginForm" class="login-form" autocomplete="on">
+      <label for="usuario">Usuário</label>
+      <input type="text" id="usuario" name="usuario" required placeholder="Seu usuário" autocomplete="username">
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" name="senha" required placeholder="Sua senha" autocomplete="current-password">
+      <button type="submit" class="entrar-btn">Entrar</button>
+      <button type="button" class="switch-link" id="toRegisterBtn">Criar nova conta</button>
+    </form>
+
+    <!-- Formulário de Cadastro -->
+    <form id="registerForm" class="login-form" style="display:none;" autocomplete="on">
+      <label for="novoUsuario">Novo Usuário</label>
+      <input type="text" id="novoUsuario" name="novoUsuario" required placeholder="Escolha um usuário" autocomplete="username">
+      <label for="novaSenha">Senha</label>
+      <input type="password" id="novaSenha" name="novaSenha" required placeholder="Crie uma senha" autocomplete="new-password">
+      <button type="submit" class="register-btn">Registrar</button>
+      <button type="button" class="switch-link" id="toLoginBtn">Já tenho conta</button>
+    </form>
+
+    <div id="mensagem" class="erro-msg"></div>
+    <footer>
+      <small>&copy; 2025 Minha Agenda Web. Todos os direitos reservados.</small>
+    </footer>
+  </div>
+  <script>
+    // Utilitários de usuários (localStorage)
+    function getUsers() {
+      let users = JSON.parse(localStorage.getItem('usuariosAgenda') || '[]');
+      if(users.length === 0) {
+        users = [{ usuario: 'admin', senha: '1234', nome: 'Administrador' }];
+        localStorage.setItem('usuariosAgenda', JSON.stringify(users));
+      }
+      return users;
+    }
+    function setUsers(users) {
+      localStorage.setItem('usuariosAgenda', JSON.stringify(users));
+    }
+    // Alternar Login/Cadastro
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const mensagem = document.getElementById('mensagem');
+    document.getElementById('toRegisterBtn').onclick = function() {
+      loginForm.style.display = 'none';
+      registerForm.style.display = 'flex';
+      mensagem.textContent = '';
+    };
+    document.getElementById('toLoginBtn').onclick = function() {
+      registerForm.style.display = 'none';
+      loginForm.style.display = 'flex';
+      mensagem.textContent = '';
+    };
+    // Login
+    loginForm.onsubmit = function(e) {
+      e.preventDefault();
+      const usuario = document.getElementById('usuario').value.trim();
+      const senha = document.getElementById('senha').value;
+      const users = getUsers();
+      const user = users.find(u => u.usuario === usuario && u.senha === senha);
+      if (user) {
+        localStorage.setItem('usuarioLogado', JSON.stringify(user));
+        mensagem.textContent = '';
+        mensagem.className = "sucesso-msg";
+        mensagem.textContent = "Login realizado! Redirecionando...";
+        setTimeout(() => { window.location.href = 'agenda.html'; }, 1200);
+      } else {
+        mensagem.className = "erro-msg";
+        mensagem.textContent = "Usuário ou senha incorretos!";
+      }
+    };
+    // Cadastro
+    registerForm.onsubmit = function(e) {
+      e.preventDefault();
+      const novoUsuario = document.getElementById('novoUsuario').value.trim();
+      const novaSenha = document.getElementById('novaSenha').value;
+      if (!novoUsuario || !novaSenha) return;
+      let users = getUsers();
+      if (users.find(u => u.usuario === novoUsuario)) {
+        mensagem.className = "erro-msg";
+        mensagem.textContent = "Usuário já existe!";
+        return;
+      }
+      users.push({ usuario: novoUsuario, senha: novaSenha, nome: novoUsuario });
+      setUsers(users);
+      mensagem.className = "sucesso-msg";
+      mensagem.textContent = "Cadastro realizado com sucesso! Faça login.";
+      setTimeout(() => {
+        registerForm.style.display = 'none';
+        loginForm.style.display = 'flex';
+        mensagem.textContent = '';
+      }, 1500);
+    };
+  </script>
+</body>
+</html>

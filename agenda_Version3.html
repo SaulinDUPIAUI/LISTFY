@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Agenda</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="Logo" class="logo-pequeno">
+            <h1>Minha Agenda Web</h1>
+            <div class="user-checkin">
+                <span id="userWelcome"></span>
+                <button id="logoutBtn" class="logout-btn" title="Sair">Sair</button>
+            </div>
+        </header>
+        <main>
+            <section class="todo-section">
+                <h2>Minha Lista de Tarefas</h2>
+                <div class="input-group">
+                    <input type="text" id="novaTarefa" placeholder="Digite sua tarefa">
+                    <button id="adicionarTarefa" class="add-btn">Adicionar</button>
+                </div>
+                <ul id="listaTarefas"></ul>
+            </section>
+        </main>
+        <footer>
+            <small>&copy; 2025 Minha Agenda Web.</small>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
